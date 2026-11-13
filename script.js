@@ -237,6 +237,26 @@
     window.setTimeout(() => { window.location.href = destination.href; }, reducedMotion ? 0 : 160);
   });
 
+
+  /* Filter the photo portfolio without a dependency or page reload. */
+  const gallery = document.querySelector('[data-project-gallery]');
+  if (gallery) {
+    const cards = [...gallery.querySelectorAll('[data-gallery-card]')];
+    const filterButtons = [...document.querySelectorAll('[data-gallery-filter]')];
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.galleryFilter;
+        filterButtons.forEach(item => {
+          const selected = item === button;
+          item.setAttribute('aria-pressed', String(selected));
+        });
+        cards.forEach(card => {
+          card.hidden = filter !== 'all' && card.dataset.galleryCard !== filter;
+        });
+      });
+    });
+  }
+
   /* Quote form prepares a WhatsApp message; visitor reviews and sends it. */
   const form = document.querySelector('[data-whatsapp-form]');
   const status = document.querySelector('[data-form-status]');
