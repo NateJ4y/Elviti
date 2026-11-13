@@ -133,7 +133,7 @@
     revealItems.forEach(el => el.classList.add('is-revealed'));
   }
 
-  /* Hero slider: manual controls, gentle autoplay, pause on focus/hover. */
+  /* Hero slider: autoplay runs continuously unless the visitor presses Pause. */
   const slider = document.querySelector('[data-hero-slider]');
   if (slider) {
     const slides = [...slider.querySelectorAll('[data-slide]')];
@@ -143,12 +143,9 @@
     const previous = slider.querySelector('[data-slide-prev]');
     const next = slider.querySelector('[data-slide-next]');
     const pauseButton = slider.querySelector('[data-slide-pause]');
-    let activeIndex = 0;
+    let activeIndex = Math.max(0, slides.findIndex(slide => slide.classList.contains('is-active')));
     let timer = 0;
-    if (pauseButton && reducedMotion) pauseButton.hidden = true;
     let userPaused = false;
-    let pointerPaused = false;
-    let focusPaused = false;
     const interval = 7500;
 
     const preloadSlideImage = index => {
@@ -171,10 +168,9 @@
       timer = 0;
       if (progress) progress.classList.remove('is-running');
     };
-    const shouldAutoplay = () => !reducedMotion && !userPaused && !pointerPaused && !focusPaused && document.visibilityState === 'visible';
     const startTimer = () => {
       stopTimer();
-      if (!shouldAutoplay()) return;
+      if (userPaused || slides.length < 2) return;
       if (progress) {
         void progress.offsetWidth;
         progress.classList.add('is-running');
@@ -183,6 +179,7 @@
     };
 
     function showSlide(nextIndex) {
+      if (!slides.length) return;
       activeIndex = (nextIndex + slides.length) % slides.length;
       slides.forEach((slide, i) => {
         const active = i === activeIndex;
@@ -201,6 +198,8 @@
       startTimer();
     }
 
+    // Keep the controls in sync with the slide marked active in the HTML.
+    showSlide(activeIndex);
     previous?.addEventListener('click', () => showSlide(activeIndex - 1));
     next?.addEventListener('click', () => showSlide(activeIndex + 1));
     dots.forEach(dot => dot.addEventListener('click', () => showSlide(Number(dot.dataset.slideTo))));
@@ -208,21 +207,14 @@
       userPaused = !userPaused;
       pauseButton.textContent = userPaused ? '▶' : 'Ⅱ';
       pauseButton.setAttribute('aria-label', userPaused ? 'Play automatic slides' : 'Pause automatic slides');
+      pauseButton.setAttribute('aria-pressed', String(userPaused));
       startTimer();
-    });
-    slider.addEventListener('mouseenter', () => { pointerPaused = true; stopTimer(); });
-    slider.addEventListener('mouseleave', () => { pointerPaused = false; startTimer(); });
-    slider.addEventListener('focusin', () => { focusPaused = true; stopTimer(); });
-    slider.addEventListener('focusout', event => {
-      if (!slider.contains(event.relatedTarget)) { focusPaused = false; startTimer(); }
     });
     slider.addEventListener('keydown', event => {
       if (event.key === 'ArrowLeft') { event.preventDefault(); showSlide(activeIndex - 1); }
       if (event.key === 'ArrowRight') { event.preventDefault(); showSlide(activeIndex + 1); }
     });
-    document.addEventListener('visibilitychange', startTimer);
-    preloadSlideImage(1);
-    startTimer();
+    preloadSlideImage((activeIndex + 1) % slides.length);
   }
 
   /* One lightweight scroll handler updates the sticky header and two decorative parallax layers. */
