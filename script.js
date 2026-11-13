@@ -7,40 +7,71 @@
 
   if (preloader) {
     const minimumLoaderTime = 2500;
-    const startedAt = performance.now();
-    let dismissed = false;
+    const startedAt = Number.isFinite(window.__elvitiLoaderStartedAt)
+      ? window.__elvitiLoaderStartedAt
+      : performance.now();
 
+    // The HTML starts in the is-loading state, so the preloader is already
+    // the only visible element before this deferred script executes.
     preloader.hidden = false;
-    requestAnimationFrame(() => preloader.classList.add('is-visible'));
 
-    const dismissLoader = () => {
-      if (dismissed) return;
-      dismissed = true;
+    const pageLoad = document.readyState === 'complete'
+      ? Promise.resolve()
+      : new Promise(resolve => window.addEventListener('load', resolve, { once: true }));
 
-      // Keep the branded loader on screen for at least 2.5 seconds.
-      // If the page takes longer, dismiss it as soon as loading completes.
+    const fontsLoaded = document.fonts?.ready
+      ? document.fonts.ready.catch(() => {})
+      : Promise.resolve();
+
+    // The two non-active hero slides are also needed for a complete slider.
+    // Load them now and reuse these decoded images when the slider starts.
+    const heroImagesLoaded = Promise.all(
+      [...document.querySelectorAll('.hero-slide-bg[data-bg]')].map(element => new Promise(resolve => {
+        const source = element.dataset.bg;
+        if (!source || element.dataset.loaded) {
+          resolve();
+          return;
+        }
+
+        const image = new Image();
+        image.decoding = 'async';
+        image.onload = () => {
+          const applyImage = () => {
+            element.style.backgroundImage = 'url("' + source + '")';
+            element.dataset.loaded = 'true';
+            resolve();
+          };
+          if (typeof image.decode === 'function') {
+            image.decode().catch(() => {}).then(applyImage);
+          } else {
+            applyImage();
+          }
+        };
+        image.onerror = () => {
+          element.dataset.loaded = 'error';
+          resolve();
+        };
+        image.src = source;
+      }))
+    );
+
+    Promise.all([pageLoad, fontsLoaded, heroImagesLoaded]).then(() => {
       const elapsed = performance.now() - startedAt;
       const remaining = Math.max(0, minimumLoaderTime - elapsed);
 
       window.setTimeout(() => {
-        preloader.classList.add('is-done');
+        // Reveal the page only after the full load event, fonts and hero
+        // slider images have completed (successfully or with an error).
+        document.documentElement.classList.remove('is-loading');
         document.documentElement.classList.add('page-ready');
+        preloader.classList.add('is-done');
 
         window.setTimeout(() => {
           preloader.hidden = true;
           preloader.classList.remove('is-visible', 'is-done');
-        }, 320);
+        }, 360);
       }, remaining);
-    };
-
-    if (document.readyState === 'complete') {
-      dismissLoader();
-    } else {
-      window.addEventListener('load', dismissLoader, { once: true });
-
-      // Fallback for pages where the load event is delayed or fails to fire.
-      window.setTimeout(dismissLoader, 5000);
-    }
+    });
   }
 
   const header = document.querySelector('.site-header');
@@ -232,8 +263,8 @@
     event.preventDefault();
     preloader.hidden = false;
     preloader.classList.remove('is-done');
+    document.documentElement.classList.add('is-loading');
     requestAnimationFrame(() => preloader.classList.add('is-visible'));
-    document.body.classList.add('page-leaving');
     window.setTimeout(() => { window.location.href = destination.href; }, reducedMotion ? 0 : 160);
   });
 
