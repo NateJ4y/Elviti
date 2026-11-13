@@ -19,7 +19,7 @@ button{cursor:pointer}
 /* Homepage navigation overlays the hero instead of occupying a separate white bar. */
 .home-page .site-header{
   position:absolute;
-  top:0;
+  top:36px;
   left:0;
   right:0;
   width:100%;
