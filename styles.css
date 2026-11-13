@@ -632,3 +632,35 @@ button[type="submit"],[data-gallery-filter]{
  .gallery-ticker-track{animation:none}
  .ticker-item,.ticker-item img{transition:none}
 }
+
+
+/* Centre the complete homepage “What we do” section. */
+.home-page .intro-grid{
+  grid-template-columns:minmax(0,760px);
+  justify-content:center;
+  justify-items:center;
+  gap:30px;
+  text-align:center;
+}
+.home-page .intro-visual,
+.home-page .intro-copy{
+  width:100%;
+  max-width:760px;
+}
+.home-page .intro-visual .eyebrow,
+.home-page .intro-visual h2{
+  text-align:center;
+}
+.home-page .gallery-ticker{
+  margin-inline:auto;
+  text-align:left;
+}
+.home-page .ticker-hint{
+  justify-content:center;
+}
+.home-page .intro-copy{
+  margin-inline:auto;
+}
+.home-page .intro-copy .arrow-link{
+  margin-inline:auto;
+}
