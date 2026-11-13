@@ -365,8 +365,8 @@ button[type="submit"],[data-gallery-filter]{
   transition:opacity .18s ease,transform .18s ease,color .14s ease,background-color .14s ease;
   mix-blend-mode:normal;background:transparent;color:var(--yellow);will-change:transform}
 .site-cursor.is-visible{opacity:1;transform:translate3d(-50%,-50%,0) scale(1)}
-.site-cursor.is-hovering{transform:translate3d(-50%,-50%,0) scale(1.3);background:currentColor}
-.site-cursor.is-hovering::first-letter{color:var(--black)}
+.site-cursor.is-hovering{transform:translate3d(-50%,-50%,0) scale(1.3)}
+@media(hover:hover) and (pointer:fine){.home-page{cursor:none}.home-page a,.home-page button,.home-page input,.home-page select,.home-page textarea{cursor:none}}
 @media(hover:none),(pointer:coarse){.site-cursor{display:none!important}}
 @media(prefers-reduced-motion:reduce){
   .hero-slide.is-active .hero-slide-bg{animation:none;transform:scale(1.02)}
