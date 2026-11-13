@@ -293,7 +293,6 @@
           if (section?.matches('.hero,.portfolio-tease,.footer,.page-hero,.contact-panel,.about-statement')) tone = 'white';
           else if (section?.matches('.cta-strip,.service-jump')) tone = 'black';
           cursor.style.color = tone === 'white' ? '#fff' : tone === 'black' ? '#111' : '#F4B400';
-          cursor.style.backgroundColor = tone === 'black' ? '#111' : 'transparent';
           cursor.classList.toggle('is-hovering', Boolean(surface?.closest('a,button,[role="button"],input,select,textarea')));
         });
       };
