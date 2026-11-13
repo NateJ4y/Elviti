@@ -29,7 +29,7 @@ Responsive, multi-page company website for Elviti Works (Pty) Ltd.
 - Scroll reveals use IntersectionObserver
 - Parallax updates are limited to two decorative layers and one requestAnimationFrame scroll handler
 - Reduced-motion preferences are respected
-- Loader is short, with a timeout fallback
+- Branded loader has a 2.5-second minimum display time and a 5-second fallback
 - No video backgrounds or heavy scroll animation dependencies
 
 ## Enquiry journey
@@ -46,7 +46,7 @@ Visitors can move from the hero to a relevant service or request a quote. The co
 
 ## Content safeguards
 - No clients, projects, results, years of experience, testimonials or certifications have been invented.
-- Stock images are only illustrative backgrounds and are not presented as Elviti Works project work.
+- The gallery and homepage visuals use the actual photographs supplied in the repository; the images are not given invented client names, dates, contract values or outcomes.
 - Service availability and delivery arrangements must be confirmed for each enquiry.
 - The current location wording is city-level only; no unconfirmed street address is shown.
 
