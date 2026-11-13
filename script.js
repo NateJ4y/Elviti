@@ -99,6 +99,7 @@
     const pauseButton = slider.querySelector('[data-slide-pause]');
     let activeIndex = 0;
     let timer = 0;
+    if (pauseButton && reducedMotion) pauseButton.hidden = true;
     let userPaused = false;
     let pointerPaused = false;
     let focusPaused = false;
@@ -141,6 +142,7 @@
         const active = i === activeIndex;
         slide.classList.toggle('is-active', active);
         slide.setAttribute('aria-hidden', String(!active));
+        slide.inert = !active;
       });
       dots.forEach((dot, i) => {
         const active = i === activeIndex;
