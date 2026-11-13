@@ -475,3 +475,16 @@ button[type="submit"],[data-gallery-filter]{
 .brand-footer .brand-logo{filter:none}
 .brand-footer:after{display:none}
 .preloader-inner img{object-fit:contain}
+
+/* Keep the logo readable on light inner-page headers; use the white wordmark only over the homepage hero. */
+.brand .brand-logo{filter:none}
+.brand:after{display:none}
+.home-page .brand .brand-logo{filter:brightness(0) invert(1)}
+.home-page .brand:after{
+  display:block;
+  background-size:auto 68px;
+  background-position:left top;
+}
+@media(max-width:760px){
+  .home-page .brand:after{background-size:auto 57px}
+}
