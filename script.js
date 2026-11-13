@@ -17,7 +17,10 @@
       window.setTimeout(() => {
         preloader.classList.add('is-done');
         document.documentElement.classList.add('page-ready');
-        window.setTimeout(() => preloader.remove(), 320);
+        window.setTimeout(() => {
+          preloader.hidden = true;
+          preloader.classList.remove('is-visible', 'is-done');
+        }, 320);
       }, wait);
     };
     if (document.readyState === 'complete') {
