@@ -125,7 +125,7 @@ h2{font-size:clamp(34px,4vw,50px);line-height:1.13;font-weight:800;margin:0 0 18
 .portfolio-inner h2{font-size:clamp(37px,4.4vw,54px)}
 .portfolio-inner p:not(.eyebrow){color:#d0d0d0;font-size:12px;line-height:1.9;max-width:530px}
 .portfolio-photo{height:330px;background:linear-gradient(0deg,#0002,#0002),url('N.jpeg') center/cover;transform:scale(1.1);will-change:transform;position:relative}
-.portfolio-photo:after{content:"";position:absolute;inset:15px;border:1px solid #ffffff75}
+.portfolio-photo:after{content:"";position:absolute;inset:15px;border:1px solid #ffffff75;pointer-events:none}
 .cta-strip{padding:44px 0;background:var(--yellow);color:#111}
 .cta-strip-inner{display:flex;align-items:center;justify-content:space-between;gap:32px}
 .cta-strip .eyebrow{color:#614700;margin-bottom:8px}
@@ -304,9 +304,6 @@ body.page-leaving main{opacity:.45;transition:opacity .18s ease}
 
 /* Actual Elviti Works project photographs */
 .hero-slide-bg--construction{background-image:url('A.jpeg')}
-.hero-slide-bg--maintenance{background-image:url('C.jpeg')}
-.hero-slide-bg--projects{background-image:url('K.jpeg')}
-.portfolio-photo{background-image:linear-gradient(0deg,#0003,#0002),url('N.jpeg')}
 .project-gallery-section{padding-top:10px}
 .project-gallery-intro{max-width:750px;color:var(--muted);font-size:12px;line-height:1.9;margin-bottom:24px}
 .portfolio-filters{display:flex;flex-wrap:wrap;gap:9px;margin:24px 0 28px}
