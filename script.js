@@ -6,28 +6,40 @@
   const preloader = document.querySelector('[data-preloader]');
 
   if (preloader) {
-    preloader.hidden = false;
-    requestAnimationFrame(() => preloader.classList.add('is-visible'));
+    const minimumLoaderTime = 2500;
     const startedAt = performance.now();
     let dismissed = false;
+
+    preloader.hidden = false;
+    requestAnimationFrame(() => preloader.classList.add('is-visible'));
+
     const dismissLoader = () => {
       if (dismissed) return;
       dismissed = true;
-      const wait = Math.max(0, 220 - (performance.now() - startedAt));
+
+      // Keep the branded loader on screen for at least 2.5 seconds.
+      // If the page takes longer, dismiss it as soon as loading completes.
+      const elapsed = performance.now() - startedAt;
+      const remaining = Math.max(0, minimumLoaderTime - elapsed);
+
       window.setTimeout(() => {
         preloader.classList.add('is-done');
         document.documentElement.classList.add('page-ready');
+
         window.setTimeout(() => {
           preloader.hidden = true;
           preloader.classList.remove('is-visible', 'is-done');
         }, 320);
-      }, wait);
+      }, remaining);
     };
+
     if (document.readyState === 'complete') {
       dismissLoader();
     } else {
       window.addEventListener('load', dismissLoader, { once: true });
-      window.setTimeout(dismissLoader, 1400);
+
+      // Fallback for pages where the load event is delayed or fails to fire.
+      window.setTimeout(dismissLoader, 5000);
     }
   }
 
