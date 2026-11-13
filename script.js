@@ -269,6 +269,40 @@
   });
 
 
+
+  /* Main-page adaptive cursor: yellow on light surfaces, white on dark, black on yellow. */
+  if (document.body.classList.contains('home-page') || document.querySelector('[data-hero-slider]')) {
+    const cursor = document.createElement('div');
+    cursor.className = 'site-cursor';
+    cursor.setAttribute('aria-hidden', 'true');
+    cursor.textContent = '↗';
+    document.body.appendChild(cursor);
+    const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (canHover) {
+      let cursorFrame = 0, pointerX = 0, pointerY = 0;
+      const moveCursor = event => {
+        pointerX = event.clientX; pointerY = event.clientY;
+        if (!cursorFrame) cursorFrame = requestAnimationFrame(() => {
+          cursorFrame = 0;
+          cursor.style.left = pointerX + 'px';
+          cursor.style.top = pointerY + 'px';
+          cursor.classList.add('is-visible');
+          const surface = document.elementFromPoint(pointerX, pointerY);
+          const section = surface?.closest('.hero,.portfolio-tease,.footer,.page-hero,.contact-panel,.about-statement,.cta-strip,.service-jump');
+          let tone = 'yellow';
+          if (section?.matches('.hero,.portfolio-tease,.footer,.page-hero,.contact-panel,.about-statement')) tone = 'white';
+          else if (section?.matches('.cta-strip,.service-jump')) tone = 'black';
+          cursor.style.color = tone === 'white' ? '#fff' : tone === 'black' ? '#111' : '#F4B400';
+          cursor.style.backgroundColor = tone === 'black' ? '#111' : 'transparent';
+          cursor.classList.toggle('is-hovering', Boolean(surface?.closest('a,button,[role="button"],input,select,textarea')));
+        });
+      };
+      document.addEventListener('pointermove', moveCursor, { passive: true });
+      document.addEventListener('pointerleave', () => cursor.classList.remove('is-visible'));
+      document.addEventListener('pointerenter', () => cursor.classList.add('is-visible'));
+    }
+  }
+
   /* Filter the photo portfolio without a dependency or page reload. */
   const gallery = document.querySelector('[data-project-gallery]');
   if (gallery) {
