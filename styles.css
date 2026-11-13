@@ -328,3 +328,8 @@ body.page-leaving main{opacity:.45;transition:opacity .18s ease}
 .service-gallery-row img{width:100%;height:245px;object-fit:cover}
 @media(max-width:760px){.project-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.project-photo figcaption{padding:10px;font-size:10px}.portfolio-filters{gap:7px}.portfolio-filters button{padding:9px 10px;font-size:9px}}
 @media(max-width:420px){.project-gallery{grid-template-columns:1fr}.project-photo .photo-frame{aspect-ratio:16/10}}
+
+.service-detail-body{grid-template-columns:1fr 1fr 1fr;gap:20px}
+.service-photo{display:block;width:100%;height:215px;object-fit:cover;border:1px solid #e1e1e1;align-self:start}
+@media(max-width:1050px) and (min-width:761px){.service-detail-body{grid-template-columns:1fr 1fr}.service-photo{grid-column:1/-1;height:230px}}
+@media(max-width:760px){.service-detail-body{grid-template-columns:1fr}.service-photo{height:220px;grid-column:auto}}
