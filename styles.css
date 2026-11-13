@@ -388,3 +388,48 @@ button[type="submit"],[data-gallery-filter]{
   .hero-slide.is-active .hero-slide-bg{animation:none;transform:scale(1.02)}
   .btn,.nav-cta,button,[data-gallery-filter]{transition:none!important}
 }
+
+
+/* Homepage announcement bar and bold brand-led hero treatment. */
+.home-announcement{background:#111;color:#f4f4f4;letter-spacing:0;text-transform:none;font-size:13px}
+.home-announcement .topbar-inner{min-height:52px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.announcement-message,.announcement-right,.announcement-social{display:flex;align-items:center}
+.announcement-message{gap:12px;font-size:14px;white-space:nowrap}
+.announcement-message strong{color:#fff;font-weight:800}
+.announcement-mark{display:block;width:2px;height:27px;background:var(--yellow);font-size:0;margin-right:4px}
+.announcement-megaphone{color:var(--yellow);font-size:18px;transform:rotate(180deg)}
+.announcement-right{gap:22px;margin-left:auto}
+.announcement-social{gap:20px;padding:0 22px;border-left:1px solid #aaa;border-right:1px solid #aaa}
+.social-icon{width:18px;height:18px;display:grid;place-items:center;color:#fff;font-weight:800;font-size:16px;line-height:1}
+.social-facebook{font-family:Arial,sans-serif;font-size:19px}
+.social-linkedin{font-size:14px;letter-spacing:-.06em}
+.social-instagram svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8}
+.social-instagram .social-dot{fill:currentColor;stroke:none}
+.announcement-tagline{font-size:9px;letter-spacing:.13em;white-space:nowrap;color:#e5e5e5}
+.home-page .site-header{top:52px}
+.home-page .hero{height:min(790px,calc(100svh - 52px));min-height:650px}
+.hero-category{font-size:clamp(11px,1.05vw,14px);letter-spacing:.13em;margin:0 0 20px;color:var(--yellow)}
+.hero-category span{padding:0 3px;color:var(--yellow)}
+.hero-statement{font-size:clamp(58px,7.2vw,104px);line-height:.88;letter-spacing:-.055em;font-weight:800;max-width:850px;margin:0 0 20px;text-transform:uppercase}
+.hero-statement em{color:var(--yellow);font-style:normal}
+.home-page .hero-content{padding-top:95px;padding-bottom:92px}
+@media(max-width:760px){
+ .home-announcement .topbar-inner{min-height:42px;padding:0}
+ .announcement-message{font-size:10px;gap:7px}
+ .announcement-megaphone{font-size:13px}
+ .announcement-right{gap:10px}
+ .announcement-social{gap:9px;padding:0 10px}
+ .social-icon{width:14px;height:14px;font-size:13px}
+ .social-instagram svg{width:14px;height:14px}
+ .announcement-tagline{display:none}
+ .home-page .site-header{top:42px}
+ .home-page .hero{height:720px;min-height:650px;max-height:calc(100svh - 42px)}
+ .hero-category{font-size:9px;letter-spacing:.09em;margin-bottom:16px}
+ .hero-statement{font-size:clamp(48px,12.5vw,76px);line-height:.92}
+ .home-page .hero-content{padding-top:92px;padding-bottom:112px}
+}
+@media(max-width:390px){
+ .announcement-message{font-size:9px}
+ .announcement-right{gap:7px}
+ .announcement-social{gap:7px;padding:0 7px}
+}
