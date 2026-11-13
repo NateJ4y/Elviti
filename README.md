@@ -32,6 +32,7 @@ The primary path is: understand the offer → review capability areas → unders
 - Supply verified company history, leadership details and approved testimonials if these are to be published.
 - Supply current registration, tax, supplier, B-BBEE and health-and-safety documentation where applicable.
 - Confirm the business email address if it should appear publicly.
+- Confirm any service features, promotions or special offers before adding them to the website; none have been invented or published.
 - Confirm whether a server-side enquiry inbox, CRM, analytics and privacy notice are required.
 
 ## Content safeguards
