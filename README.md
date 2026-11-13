@@ -3,44 +3,46 @@
 Responsive, multi-page company website for Elviti Works (Pty) Ltd.
 
 ## Pages
-- Home — positioning, capability overview, audiences, process and primary enquiry routes
-- About — company positioning and working principles
-- Services — four service areas with detailed scope prompts
-- Projects — portfolio and case-study framework (awaiting verified project material)
-- Compliance — procurement document request guidance (no unverified credential claims)
-- Contact — project enquiry form prepared for WhatsApp handoff
+- Home — plain-language service overview, action-led hero slider and quote routes
+- About — company overview and simple working process
+- Services — four clear service areas with direct enquiry links
+- Projects — portfolio framework awaiting verified examples
+- Compliance — supplier document request information
+- Contact — quote form prepared for WhatsApp handoff
 
-## Brand direction
-The website follows the supplied Elviti Works identity board:
+## Brand
 - Safety Yellow: #F4B400
 - Charcoal Black: #1A1A1A
 - Light Grey: #E5E5E5
 - Typography: Montserrat
-- Existing Elviti Works logo asset retained throughout
+- Existing Elviti Works logo is used across the site
 
-## Technical setup
-Static HTML, CSS and vanilla JavaScript. No build step or framework dependency is required. Open `index.html` locally or serve the folder with a static web server.
+## Performance-conscious experience
+- Static HTML, CSS and vanilla JavaScript; no framework or animation library
+- Hero slider loads its additional slide photography only when needed
+- Scroll reveals use IntersectionObserver
+- Parallax updates are limited to two decorative layers and one requestAnimationFrame scroll handler
+- Reduced-motion preferences are respected
+- Loader is short, with a timeout fallback
+- No video backgrounds or heavy scroll animation dependencies
 
-## Conversion journey
-The primary path is: understand the offer → review capability areas → understand the approach → request a quote. Phone and WhatsApp remain available throughout the site. The enquiry form prepares a WhatsApp message for the visitor to review and send; it does not create a server-side lead record or CRM entry.
+## Enquiry journey
+Visitors can move from the hero to a relevant service or request a quote. The contact form prepares a WhatsApp message for the visitor to review and send. It does not store submissions or create a CRM record.
 
-## Pre-launch items requiring Elviti Works confirmation
+## Requires client confirmation before launch
 - Confirm that +27 72 626 7179 is the correct public call and WhatsApp number.
-- Confirm the preferred public location wording and whether a street address should be published. The old Ibali Complex address is intentionally not used.
-- Confirm the final service list, which services are delivered directly, which use specialist partners, and any qualification or registration requirements.
-- Supply approved project descriptions, dates, locations, outcomes, photos and client permissions for the portfolio.
-- Supply verified company history, leadership details and approved testimonials if these are to be published.
-- Supply current registration, tax, supplier, B-BBEE and health-and-safety documentation where applicable.
-- Confirm the business email address if it should appear publicly.
-- Confirm any service features, promotions or special offers before adding them to the website; none have been invented or published.
-- Confirm whether a server-side enquiry inbox, CRM, analytics and privacy notice are required.
+- Confirm preferred public location wording and whether a street address should be published. The old Ibali Complex address is not used.
+- Confirm final service list, direct delivery vs specialist partners, qualifications and registrations.
+- Supply approved project descriptions, dates, locations, outcomes, images and publication permissions.
+- Supply verified company history, leadership details and approved testimonials if needed.
+- Supply current registration, tax, supplier, B-BBEE and health-and-safety documents where applicable.
+- Confirm business email, privacy notice, analytics and whether a server-side lead inbox or CRM is required.
 
 ## Content safeguards
-- No client names, project results, years of experience, testimonials, accreditations or certification levels have been invented.
-- The projects page does not present stock photography as completed Elviti Works work.
-- The compliance page lists possible document categories only; it does not assert that a particular credential or status is held.
-- Service availability, specialist qualifications and delivery arrangements are to be confirmed per project.
-- The new street address is not published pending confirmation.
+- No clients, projects, results, years of experience, testimonials or certifications have been invented.
+- Stock images are only illustrative backgrounds and are not presented as Elviti Works project work.
+- Service availability and delivery arrangements must be confirmed for each enquiry.
+- The current location wording is city-level only; no unconfirmed street address is shown.
 
 ## QA status
-Repository content has been revised for brand consistency, conversion structure, responsive layouts, navigation and form handoff. Before public launch, test all six pages in current desktop and mobile browsers, check the live logo/image and font loading, verify the public phone/WhatsApp number, submit a test enquiry, and confirm hosting/domain configuration. No deployment is performed by this repository update.
+Repository content has been reviewed for page structure, internal links and shared components. Live desktop/mobile browser testing, image/font loading checks, contact-number confirmation and hosting/domain verification remain required before launch.
