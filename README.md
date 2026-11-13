@@ -6,7 +6,7 @@ Responsive, multi-page company website for Elviti Works (Pty) Ltd.
 - Home — plain-language service overview, action-led hero slider and quote routes
 - About — company overview and simple working process
 - Services — four clear service areas with direct enquiry links
-- Projects — portfolio framework awaiting verified examples
+- Projects — selected photographs from actual work, with project details to be confirmed
 - Compliance — supplier document request information
 - Contact — quote form prepared for WhatsApp handoff
 
@@ -16,6 +16,12 @@ Responsive, multi-page company website for Elviti Works (Pty) Ltd.
 - Light Grey: #E5E5E5
 - Typography: Montserrat
 - Existing Elviti Works logo is used across the site
+
+## Project imagery
+- Actual site and work photographs are stored in the repository root as A.jpeg through S.jpeg.
+- The homepage slider and portfolio preview use local project photographs.
+- The Projects page displays a lazy-loaded, filterable gallery of the available images.
+- Captions describe only what is visibly shown; client identities, contract values and outcomes are not inferred.
 
 ## Performance-conscious experience
 - Static HTML, CSS and vanilla JavaScript; no framework or animation library
