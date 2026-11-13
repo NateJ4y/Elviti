@@ -29,7 +29,7 @@ Responsive, multi-page company website for Elviti Works (Pty) Ltd.
 - Scroll reveals use IntersectionObserver
 - Parallax updates are limited to two decorative layers and one requestAnimationFrame scroll handler
 - Reduced-motion preferences are respected
-- Branded loader has a 2.5-second minimum display time and a 5-second fallback
+- Branded loader is the only visible element until the browser load event, required fonts and hero slider photographs have completed; it has a 2.5-second minimum display time and no premature timeout fallback.
 - No video backgrounds or heavy scroll animation dependencies
 
 ## Enquiry journey
