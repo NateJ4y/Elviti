@@ -294,6 +294,49 @@
     }
   }
 
+  /* Homepage image ticker and accessible full-view gallery. */
+  const ticker = document.querySelector('[data-gallery-ticker]');
+  const lightbox = document.querySelector('[data-gallery-lightbox]');
+  if (ticker && lightbox) {
+    const track = ticker.querySelector('[data-ticker-track]');
+    const image = lightbox.querySelector('[data-lightbox-image]');
+    const title = lightbox.querySelector('[data-lightbox-title]');
+    const description = lightbox.querySelector('[data-lightbox-description]');
+    const close = lightbox.querySelector('[data-lightbox-close]');
+    ticker.querySelectorAll('.gallery-ticker-set:first-child .ticker-item').forEach(item => {
+      item.addEventListener('pointerenter', () => ticker.classList.add('is-image-hovered'));
+      item.addEventListener('pointerleave', () => ticker.classList.remove('is-image-hovered'));
+      item.addEventListener('focus', () => ticker.classList.add('is-image-hovered'));
+      item.addEventListener('blur', () => ticker.classList.remove('is-image-hovered'));
+    });
+    ticker.querySelectorAll('.ticker-item').forEach(item => {
+      item.addEventListener('click', () => {
+        if (item.closest('[aria-hidden="true"]')) return;
+        image.src = item.dataset.tickerImage;
+        image.alt = item.querySelector('img')?.alt || item.dataset.tickerTitle;
+        title.textContent = item.dataset.tickerTitle;
+        description.textContent = item.dataset.tickerDescription;
+        if (typeof lightbox.showModal === 'function') lightbox.showModal();
+        else lightbox.setAttribute('open', '');
+        close.focus();
+      });
+    });
+    const closeLightbox = () => {
+      if (typeof lightbox.close === 'function' && lightbox.open) lightbox.close();
+      else lightbox.removeAttribute('open');
+    };
+    close.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', event => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    lightbox.addEventListener('close', () => {
+      image.removeAttribute('src');
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && lightbox.open) closeLightbox();
+    });
+  }
+
   /* Filter the photo portfolio without a dependency or page reload. */
   const gallery = document.querySelector('[data-project-gallery]');
   if (gallery) {
