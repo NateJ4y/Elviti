@@ -38,8 +38,9 @@ function App() {
       {mobileOpen && <button className="mobile-scrim" aria-label="Close navigation" onClick={() => setMobileOpen(false)} />}
       <aside className={'sidebar ' + (mobileOpen ? 'sidebar-open' : '')}>
         <div className="brand-lockup">
-          <div className="brand-symbol"><ShieldCheck size={22} strokeWidth={2.2} /></div>
-          <div><strong>ELVITI WORKS</strong><span>OPERATIONS PORTAL</span></div>
+          <img className="brand-logo" src="https://raw.githubusercontent.com/NateJ4y/Elviti/feature/health-safety-portal/Elviti%20Works%20Logo.png" alt="Elviti Works" />
+          <div className="brand-divider" aria-hidden="true" />
+          <div className="brand-product"><strong>HEALTH & SAFETY</strong><span>OPERATIONS PORTAL</span></div>
           <button className="sidebar-close" onClick={() => setMobileOpen(false)} aria-label="Close menu"><X size={18} /></button>
         </div>
         <div className="workspace-switcher workspace-static">
@@ -79,7 +80,7 @@ function App() {
           {active === 'Overview' ? (
             <>
               <section className="welcome-row">
-                <div><p className="eyebrow">ELVITI WORKS · SAFETY WORKSPACE</p><h1>Welcome to your workspace</h1><p className="welcome-subtitle">Your health and safety operations will appear here once the workspace is configured.</p></div>
+                <div><p className="eyebrow">ELVITI WORKS · HEALTH & SAFETY</p><h1>Welcome to your workspace</h1><p className="welcome-subtitle">A clear view of health and safety operations across your organisation.</p></div>
                 <div className="welcome-actions"><button className="button-secondary" onClick={() => notify('Reporting will be available once records are connected.')} disabled><FileText size={16} /> Export report</button><button className="button-primary" onClick={() => setActive('Incidents')}><Siren size={16} /> Open incident register</button></div>
               </section>
 
@@ -115,7 +116,7 @@ function App() {
                   <div className="empty-panel-state compact"><span className="empty-state-icon"><ListChecks size={21} /></span><strong>No assigned actions</strong><p>Assigned tasks will appear here when workflows are enabled.</p></div>
                 </div>
               </section>
-              <footer className="page-footer"><span>Elviti Works Operations Portal</span><span>Health & safety workspace</span></footer>
+              <footer className="page-footer"><span>Elviti Works · Health & Safety Portal</span><span>Health & safety workspace</span></footer>
             </>
           ) : (
             <ModulePlaceholder section={active} onAction={() => notify('This module is not connected yet. No records have been created.')} />
