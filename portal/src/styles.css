@@ -204,3 +204,36 @@ h1,h2,h3,p{margin-top:0}
 .setup-number{height:28px;width:28px;flex:none;border-radius:8px;display:grid;place-items:center;background:#fff5dc;color:#9a781e;font:700 9px 'Manrope',sans-serif}
 .setup-list strong{display:block;font-size:10px;color:#46504c}
 .setup-list small{display:block;font-size:9px;color:#98a19d;margin-top:4px}
+
+
+/* Elviti Works brand system */
+:root{
+  --ink:#242424;
+  --muted:#747474;
+  --line:#e7e7e4;
+  --surface:#ffffff;
+  --canvas:#f5f5f2;
+  --yellow:#f4b400;
+  --green:#3e745e;
+  --sidebar:#ffffff;
+}
+.brand-lockup{gap:11px;min-height:58px;padding:0 7px 18px}
+.brand-logo{display:block;width:104px;height:42px;object-fit:contain;object-position:left center;flex:none}
+.brand-divider{height:30px;width:1px;background:#e4e4df;flex:none}
+.brand-product{min-width:0}
+.brand-product strong{display:block;color:#292929;font:800 9px 'Manrope',sans-serif;letter-spacing:.09em;line-height:1.4}
+.brand-product span{display:block;color:#999;font-size:7px;letter-spacing:.13em;margin-top:4px;white-space:nowrap}
+.brand-symbol{background:#242424;color:#f4b400}
+.workspace-avatar{background:#242424;color:#f4b400;border-radius:8px}
+.nav-item-active{background:#fff5d5;color:#302a18}
+.nav-item-active>svg{color:#a47a00}
+.help-icon,.setup-number{background:#fff3cc;color:#896800}
+.button-primary{background:#252525;border-color:#252525}
+.button-primary svg,.toast svg{color:#f4b400}
+.module-illustration{background:#fff3cc;color:#8d6b00}
+.coming-soon{color:#987300}
+.page-footer{color:#989894}
+@media(max-width:700px){
+  .brand-logo{width:105px}
+  .brand-product strong{font-size:9px}
+}
