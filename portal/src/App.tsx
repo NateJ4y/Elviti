@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import {
-  Activity, ArrowRight, Bell, BookOpen, Building2, CalendarDays, Check, CheckCircle2,
-  ChevronDown, ChevronRight, ClipboardCheck, Clock3, FileText, Filter, FolderOpen,
-  Gauge, HardHat, LayoutDashboard, LifeBuoy, ListChecks, Menu, MoreHorizontal,
+  Activity, ArrowRight, Bell, Building2, CalendarDays, Check, CheckCircle2,
+  ChevronDown, ChevronRight, ClipboardCheck, FileText, Filter, FolderOpen,
+  HardHat, LayoutDashboard, LifeBuoy, ListChecks, Menu,
   Plus, Search, Settings2, ShieldAlert, ShieldCheck, Siren, SlidersHorizontal,
   Trash2, Users, X, Pencil, Download, AlertTriangle, KanbanSquare, BarChart3,
 } from 'lucide-react'
@@ -176,7 +176,7 @@ function ReportsView({ items, filtered, onEdit }: { items: WorkItem[]; filtered:
 }
 function AdminView({ items, onEdit, onDelete }: { items: WorkItem[]; onEdit: (i: WorkItem) => void; onDelete: (id: string) => void }) {
   const roles = [{ role: 'Organisation administrator', scope: 'Organisation-wide configuration', color: 'gold' }, { role: 'H&S manager / officer', scope: 'Safety registers and approvals', color: 'green' }, { role: 'Site supervisor', scope: 'Assigned sites and actions', color: 'blue' }, { role: 'Employee / contractor', scope: 'Own tasks and approved safety info', color: 'purple' }, { role: 'Client stakeholder', scope: 'Explicitly shared project information', color: 'grey' }]
-  return <><div className="panel security-banner"><ShieldCheck size={22} /><div><strong>Access control is not active</strong><p>These are proposed role boundaries only. Enforce every permission on the server and database before onboarding users.</p></div></div><div className="panel"><PanelTitle eyebrow="ROLE DESIGN" title="Access role matrix" subtitle="Proposed roles and least-privilege boundaries." /><div className="role-grid">{roles.map(r => <div className="role-card" key={r.role}><span className={'role-dot ' + r.color} /><strong>{r.role}</strong><small>{r.scope}</small></div>)}</div></div><div className="panel"><PanelTitle eyebrow="GOVERNANCE LOG" title="Configuration register" subtitle="Track intended settings here; this is not an immutable audit log." /><RecordsTable items={items} onEdit={onEdit} onDelete={onDelete} onStatus={() => {}} section="Administration" /></div></>
+  return <><div className="panel security-banner"><ShieldCheck size={22} /><div><strong>Access control is not active</strong><p>These are proposed role boundaries only. Enforce every permission on the server and database before onboarding users.</p></div></div><div className="panel"><PanelTitle eyebrow="ROLE DESIGN" title="Access role matrix" subtitle="Proposed roles and least-privilege boundaries." /><div className="role-grid">{roles.map(r => <div className="role-card" key={r.role}><span className={'role-dot ' + r.color} /><strong>{r.role}</strong><small>{r.scope}</small></div>)}</div></div><div className="panel"><PanelTitle eyebrow="GOVERNANCE LOG" title="Configuration register" subtitle="Track intended settings here; this is not an immutable audit log." /><RecordsTable items={items} onEdit={onEdit} onDelete={onDelete} section="Administration" /></div></>
 }
 function Summary({ label, value, icon: Icon }: { label: string; value: number; icon: typeof Activity }) { return <div className="panel summary-card"><span><Icon size={16} /></span><strong>{value}</strong><small>{label}</small></div> }
 function CalendarList({ items }: { items: WorkItem[] }) {
