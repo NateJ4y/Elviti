@@ -135,7 +135,7 @@ function ModuleWorkspace({ section, items, filter, setFilter, query, onCreate, o
     {section === 'Administration' && <AdminView items={filtered} onEdit={onEdit} onDelete={onDelete} />}
     <div className="module-toolbar"><div className="toolbar-title"><Icon size={16} /><strong>{info.noun}</strong><span>{filtered.length} items</span></div><div className="toolbar-controls"><label><Filter size={14} /><select value={filter} onChange={e => setFilter(e.target.value)}><option>All</option>{statusOptions.map(s => <option key={s}>{s}</option>)}</select></label><button className="button-secondary small" onClick={() => onNotify('Advanced filters will be available with connected data.') }><SlidersHorizontal size={14} /> More filters</button></div></div>
     {(['Incidents', 'Inspections', 'Training'] as ModuleKey[]).includes(section) && <div className="module-table-panel panel"><div className="panel-heading"><div><p className="eyebrow">RECORD MANAGEMENT</p><h2>{section === 'Incidents' ? 'Incident register' : section === 'Inspections' ? 'Inspection schedule' : info.noun}</h2><p className="panel-subtitle">Search, filter, update, edit or remove session drafts.</p></div><button className="button-secondary small" onClick={onCreate}><Plus size={14} /> New</button></div><RecordsTable items={filtered} onEdit={onEdit} onDelete={onDelete} section={section} />
-    </div>
+    </div>}
     <div className="module-footnote"><ShieldCheck size={15} /> No data is saved to a server. Do not use real operational information until security controls are implemented.</div>
   </section>
 }
