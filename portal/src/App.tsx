@@ -128,7 +128,7 @@ function ModuleWorkspace({ section, items, filter, setFilter, query, onCreate, o
     {section === 'Inspections' && <InspectionView items={filtered} onEdit={onEdit} onCreate={onCreate} />}
     {section === 'Risk assessments' && <RiskView items={filtered} onEdit={onEdit} onDelete={onDelete} />}
     {section === 'Documents' && <DocumentView items={filtered} onEdit={onEdit} onDelete={onDelete} />}
-    {section === 'Training' && <TrainingView items={filtered} onEdit={onEdit} onDelete={onDelete} />}
+    {section === 'Training' && <TrainingView items={filtered} onEdit={onEdit} />}
     {section === 'People' && <PeopleView items={filtered} onEdit={onEdit} onDelete={onDelete} />}
     {section === 'Sites' && <SitesView items={filtered} onEdit={onEdit} onDelete={onDelete} />}
     {section === 'Reports' && <ReportsView items={items} filtered={filtered} onEdit={onEdit} />}
@@ -160,7 +160,7 @@ function RiskView({ items, onEdit, onDelete }: { items: WorkItem[]; onEdit: (i: 
 function DocumentView({ items, onEdit, onDelete }: { items: WorkItem[]; onEdit: (i: WorkItem) => void; onDelete: (id: string) => void }) {
   return <><div className="document-categories">{[{ name: 'Policies', icon: ShieldCheck }, { name: 'Procedures', icon: ListChecks }, { name: 'Safety files', icon: FolderOpen }, { name: 'Certificates', icon: FileText }].map(({ name, icon: I }) => <div className="panel doc-category" key={name}><I size={19} /><strong>{name}</strong><span>0 files</span></div>)}</div><div className="panel version-panel"><PanelTitle eyebrow="DOCUMENT GOVERNANCE" title="Version and approval lifecycle" subtitle="Draft → review → approved → superseded. File storage is not connected." /><div className="version-flow">{['Draft', 'Review', 'Approved', 'Superseded'].map((s, i) => <div key={s}><span>0{i + 1}</span><strong>{s}</strong></div>)}</div></div><div className="panel"><PanelTitle eyebrow="CONTROLLED LIBRARY" title="Document register" subtitle="Metadata drafts only; uploads and private storage are not configured." /><RecordsTable items={items} onEdit={onEdit} onDelete={onDelete} section="Documents" /></div></>
 }
-function TrainingView({ items, onEdit, onDelete }: { items: WorkItem[]; onEdit: (i: WorkItem) => void; onDelete: (id: string) => void }) {
+function TrainingView({ items, onEdit }: { items: WorkItem[]; onEdit: (i: WorkItem) => void }) {
   return <><div className="training-layout"><div className="panel"><PanelTitle eyebrow="TRAINING SCHEDULE" title="Upcoming training calendar" subtitle="Use due dates to plan renewals and sessions." /><CalendarList items={items} /></div><div className="panel"><PanelTitle eyebrow="COMPETENCY TRACKING" title="Training status" subtitle="Completion status across temporary training items." /><div className="training-stats">{statusOptions.slice(0, 4).map(s => <div key={s}><StatusPill status={s} /><strong>{items.filter(i => i.status === s).length}</strong></div>)}</div></div></div><div className="panel"><PanelTitle eyebrow="TRAINING MATRIX" title="Courses, inductions and competencies" subtitle="Update status as a draft training item moves through the workflow." /><Kanban items={items} onEdit={onEdit} /></div></>
 }
 function PeopleView({ items, onEdit, onDelete }: { items: WorkItem[]; onEdit: (i: WorkItem) => void; onDelete: (id: string) => void }) {
