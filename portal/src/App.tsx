@@ -1,7 +1,7 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, type FormEvent } from 'react'
 import {
   Activity, AlertTriangle, ArrowDownRight, ArrowRight, ArrowUpRight, Bell,
-  BriefcaseBusiness, Building2, CalendarDays, Check, ChevronDown, ChevronLeft,
+  Building2, CalendarDays, Check, ChevronDown,
   ChevronRight, ClipboardCheck, Clock3, FileCheck2, FileText, Filter, HardHat,
   LayoutDashboard, LifeBuoy, ListChecks, Menu, Plus, Search, Settings2,
   Shield, ShieldAlert, ShieldCheck, Siren, Users, X, Zap,
@@ -53,7 +53,7 @@ function App() {
     window.setTimeout(() => setToast(''), 3200)
   }
 
-  const submitIncident = (event: React.FormEvent<HTMLFormElement>) => {
+  const submitIncident = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     if (!form.title.trim()) return
     const newIncident: Incident = {
