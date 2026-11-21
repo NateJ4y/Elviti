@@ -237,3 +237,60 @@ h1,h2,h3,p{margin-top:0}
   .brand-logo{width:105px}
   .brand-product strong{font-size:9px}
 }
+
+
+/* Branded workspace reveal */
+.construction-loader{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;overflow:hidden;background:#202321;color:#fff;animation:loader-exit .55s cubic-bezier(.7,0,.2,1) 2s forwards}
+.loader-grid{position:absolute;inset:-20%;opacity:.22;background-image:linear-gradient(#ffffff12 1px,transparent 1px),linear-gradient(90deg,#ffffff12 1px,transparent 1px);background-size:54px 54px;transform:perspective(700px) rotateX(62deg) scale(1.5);transform-origin:center 70%;animation:grid-build 1.5s ease-out both}
+.loader-grid:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 10%,#202321 72%)}
+.loader-content{position:relative;width:min(390px,84vw);display:flex;align-items:center;flex-direction:column;text-align:center;animation:loader-content-in .8s cubic-bezier(.2,.8,.2,1) both}
+.loader-mark{position:relative;width:230px;height:112px;display:grid;place-items:center;margin-bottom:23px;overflow:hidden}
+.loader-mark img{position:relative;z-index:1;width:190px;height:90px;object-fit:contain;opacity:0;filter:drop-shadow(0 5px 18px #0006);animation:logo-reveal .8s cubic-bezier(.2,.8,.2,1) .35s forwards}
+.loader-mark:after{content:"";position:absolute;z-index:2;left:-15%;right:-15%;height:2px;top:0;background:#f4b400;box-shadow:0 0 18px 4px #f4b40099;animation:logo-scan .9s ease-in-out .25s both}
+.loader-corner{position:absolute;width:17px;height:17px;border-color:#f4b400;opacity:0;animation:corner-draw .35s ease-out .15s forwards}
+.corner-tl{left:0;top:0;border-left:1px solid;border-top:1px solid}.corner-tr{right:0;top:0;border-right:1px solid;border-top:1px solid}.corner-bl{left:0;bottom:0;border-left:1px solid;border-bottom:1px solid}.corner-br{right:0;bottom:0;border-right:1px solid;border-bottom:1px solid}
+.loader-rule{width:180px;height:2px;background:#ffffff20;overflow:hidden;margin-bottom:20px}
+.loader-rule span{display:block;width:42%;height:100%;background:#f4b400;box-shadow:0 0 12px #f4b400;animation:progress-build 1.55s cubic-bezier(.6,0,.4,1) .2s forwards}
+.loader-kicker{font-size:8px;letter-spacing:.24em;color:#e3b833;margin:0 0 9px;font-weight:700}
+.loader-content h1{font:800 25px/1 'Manrope',sans-serif;letter-spacing:.18em;margin:0;color:#fff}
+.loader-content h1 span{color:#f4b400}
+.loader-subtitle{font-size:8px;letter-spacing:.22em;color:#aab1ad;margin:10px 0 20px}
+.loader-status{display:flex;align-items:center;gap:8px;font-size:9px;color:#c2c9c5;letter-spacing:.04em}
+.loader-status i{width:6px;height:6px;border-radius:50%;background:#f4b400;box-shadow:0 0 0 4px #f4b40020;animation:status-pulse 1s ease-in-out infinite}
+.loader-foot{position:absolute;left:28px;right:28px;bottom:23px;display:flex;justify-content:space-between;color:#8d9691;font-size:7px;letter-spacing:.18em}
+@keyframes loader-content-in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes logo-reveal{0%{opacity:0;clip-path:inset(0 50% 0 50%);transform:scale(.94)}100%{opacity:1;clip-path:inset(0 0 0 0);transform:scale(1)}}
+@keyframes logo-scan{0%{top:0;opacity:0}15%{opacity:1}100%{top:100%;opacity:0}}
+@keyframes corner-draw{to{opacity:.9}}
+@keyframes progress-build{from{width:0}to{width:100%}}
+@keyframes grid-build{from{opacity:0;transform:perspective(700px) rotateX(62deg) scale(1.8)}to{opacity:.22;transform:perspective(700px) rotateX(62deg) scale(1.5)}}
+@keyframes status-pulse{50%{box-shadow:0 0 0 7px #f4b40008;opacity:.55}}
+@keyframes loader-exit{to{opacity:0;visibility:hidden;transform:scale(1.015);pointer-events:none}}
+.workspace-avatar{padding:3px;background:#fff;border:1px solid #ecece7;overflow:hidden}
+.workspace-avatar img{width:100%;height:100%;object-fit:contain}
+.workspace-identity{min-height:61px;display:flex;align-items:center;gap:12px;padding:0 0 16px;margin-bottom:20px;border-bottom:1px solid #e9ece8}
+.workspace-identity-logo{width:105px;height:45px;display:grid;place-items:center;padding:4px 8px;background:#fff;border:1px solid #e9ece8;border-radius:8px}
+.workspace-identity-logo img{width:100%;height:100%;object-fit:contain}
+.workspace-identity-copy{display:flex;flex-direction:column;gap:4px}
+.workspace-identity-copy span{font-size:8px;letter-spacing:.16em;font-weight:800;color:#a27b10}
+.workspace-identity-copy strong{font:700 12px 'Manrope',sans-serif;color:#343b38}
+.identity-divider{height:28px;width:1px;background:#e6e9e4;margin:0 4px}
+.identity-label{display:flex;align-items:center;gap:6px;margin-left:auto;padding:6px 9px;border-radius:20px;background:#f2f5f1;color:#748077;font-size:8px;font-weight:700;letter-spacing:.08em}
+.identity-label svg{color:#4f8568}
+.nav-group:nth-of-type(2) .nav-label{color:#a17a14}
+.nav-group:nth-of-type(3) .nav-label{color:#668b7b}
+.nav-group:nth-of-type(4) .nav-label{color:#74849a}
+.nav-group:nth-of-type(2) .nav-item-active{background:#fff5dc;color:#725711}
+.nav-group:nth-of-type(3) .nav-item-active{background:#edf5f0;color:#3e745e}
+.nav-group:nth-of-type(4) .nav-item-active{background:#eef2f7;color:#526b88}
+.nav-group:nth-of-type(3) .nav-item-active>svg{color:#4f8568}
+.nav-group:nth-of-type(4) .nav-item-active>svg{color:#6683a2}
+.metric-card:nth-child(1) .metric-icon{background:#fff0e9;color:#b86a46}
+.metric-card:nth-child(2) .metric-icon{background:#edf5f0;color:#4e866a}
+.metric-card:nth-child(3) .metric-icon{background:#f1eef9;color:#8070a7}
+.metric-card:nth-child(4) .metric-icon{background:#edf2f7;color:#66829b}
+.module-card:nth-child(3n+1) .module-card-icon{background:#fff3dc;color:#a47b13}
+.module-card:nth-child(3n+2) .module-card-icon{background:#edf5f0;color:#4e866a}
+.module-card:nth-child(3n) .module-card-icon{background:#eef2f7;color:#66829b}
+@media(max-width:700px){.workspace-identity{gap:9px;min-height:55px;padding-bottom:12px;margin-bottom:16px}.workspace-identity-logo{width:82px;height:39px}.workspace-identity-copy strong{font-size:10px}.identity-label{font-size:7px;padding:5px 7px}.loader-foot{left:16px;right:16px;bottom:16px;font-size:6px}.loader-mark{width:205px}}
+@media(prefers-reduced-motion:reduce){.construction-loader{animation:loader-exit .01s linear .01s forwards}.loader-grid,.loader-mark img,.loader-mark:after,.loader-corner,.loader-rule span,.loader-content,.loader-status i{animation:none!important}.loader-mark img{opacity:1;clip-path:none}.loader-corner{opacity:.9}.loader-rule span{width:100%}}
