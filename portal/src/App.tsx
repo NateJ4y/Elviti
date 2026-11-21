@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   Activity, ArrowRight, Bell, Building2, Check, ChevronDown, ChevronRight,
   ClipboardCheck, FileText, HardHat, LayoutDashboard, LifeBuoy, ListChecks,
@@ -22,6 +22,12 @@ const navigation: { label: Section; icon: typeof LayoutDashboard; group: string 
 
 function App() {
   const [active, setActive] = useState<Section>('Overview')
+  const [isRevealing, setIsRevealing] = useState(true)
+
+  useEffect(() => {
+    const revealTimer = window.setTimeout(() => setIsRevealing(false), 2550)
+    return () => window.clearTimeout(revealTimer)
+  }, [])
   const [mobileOpen, setMobileOpen] = useState(false)
   const [query, setQuery] = useState('')
   const [notice, setNotice] = useState('')
@@ -34,6 +40,8 @@ function App() {
   const groups = [...new Set(navigation.map((item) => item.group))]
 
   return (
+    <>
+    {isRevealing && <div className="construction-loader" role="status" aria-label="Preparing Elviti Works workspace"><div className="loader-grid" /><div className="loader-content"><div className="loader-mark"><span className="loader-corner corner-tl" /><span className="loader-corner corner-tr" /><span className="loader-corner corner-bl" /><span className="loader-corner corner-br" /><img src="https://raw.githubusercontent.com/NateJ4y/Elviti/feature/health-safety-portal/Elviti%20Works%20Logo.png" alt="Elviti Works" /></div><div className="loader-rule"><span /></div><p className="loader-kicker">WORKSPACE INITIALISATION</p><h1>ELVITI <span>WORKS</span></h1><p className="loader-subtitle">HEALTH &amp; SAFETY OPERATIONS</p><div className="loader-status"><i /> Preparing your workspace</div></div><div className="loader-foot"><span>BUILT ON SAFETY</span><span>ELVITI WORKS</span></div></div>}
     <div className="app-shell">
       {mobileOpen && <button className="mobile-scrim" aria-label="Close navigation" onClick={() => setMobileOpen(false)} />}
       <aside className={'sidebar ' + (mobileOpen ? 'sidebar-open' : '')}>
@@ -44,7 +52,7 @@ function App() {
           <button className="sidebar-close" onClick={() => setMobileOpen(false)} aria-label="Close menu"><X size={18} /></button>
         </div>
         <div className="workspace-switcher workspace-static">
-          <span className="workspace-avatar">EW</span>
+          <span className="workspace-avatar"><img src="https://raw.githubusercontent.com/NateJ4y/Elviti/feature/health-safety-portal/Elviti%20Works%20Logo.png" alt="" /></span>
           <span className="workspace-copy"><strong>Elviti Works</strong><small>Organisation workspace</small></span>
         </div>
         <nav className="side-navigation" aria-label="Portal navigation">
@@ -77,6 +85,7 @@ function App() {
         </header>
 
         <div className="page-content">
+          <div className="workspace-identity"><div className="workspace-identity-logo"><img src="https://raw.githubusercontent.com/NateJ4y/Elviti/feature/health-safety-portal/Elviti%20Works%20Logo.png" alt="Elviti Works logo" /></div><div className="workspace-identity-copy"><span>ELVITI WORKS</span><strong>Health &amp; Safety Workspace</strong></div><div className="identity-divider" /><span className="identity-label"><ShieldCheck size={13} /> ORGANISATION PORTAL</span></div>
           {active === 'Overview' ? (
             <>
               <section className="welcome-row">
@@ -125,6 +134,7 @@ function App() {
       </main>
       {notice && <div className="toast"><Check size={16} />{notice}</div>}
     </div>
+    </>
   )
 }
 
