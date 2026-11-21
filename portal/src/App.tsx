@@ -50,10 +50,10 @@ function App() {
   const [filter, setFilter] = useState('All')
   const [draft, setDraft] = useState({ title: '', detail: '', status: 'Open' as Status, priority: 'Normal', date: '', owner: '' })
 
-  useState(() => {
+  useEffect(() => {
     const timer = window.setTimeout(() => setIsRevealing(false), 2550)
-    return timer
-  })
+    return () => window.clearTimeout(timer)
+  }, [])
 
   const notify = (message: string) => {
     setNotice(message)
