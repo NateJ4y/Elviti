@@ -108,4 +108,4 @@ Each operational record should carry an organisation scope and, where relevant, 
 
 ## Current implementation status
 
-The first UI foundation is in src/. It includes responsive navigation, a dashboard, sample incident register, and an in-memory incident-report interaction. All visible metrics and records are demo content. No backend, authentication, authorization, persistent storage, audit log, or real notification system is connected yet.
+The UI foundation is in src/. It includes responsive navigation, an empty operational dashboard, empty incident register, and clearly labelled module foundations. All illustrative records, fabricated metrics, sample sites, demo labels, and in-memory incident submission have been removed. No backend, authentication, authorization, persistent storage, audit log, or real notification system is connected yet. The portal currently displays empty states and must not be used for real safety records until the secure foundation is complete.
